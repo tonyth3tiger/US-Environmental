@@ -1,0 +1,136 @@
+Status:
+New 
+Assigned
+In Progress
+Resolved 
+
+
+Categories: 
+Oil Spill
+Dumping
+
+
+Priority:
+High
+Medium
+Low
+Very Low
+Not Assigned yet
+
+
+Roles:
+Unregistered Users
+Registered User
+Admin
+City†manager
+
+
+use us_environmental;
+
+INSERT INTO status (status_text) VALUES ( 'New' ) ;
+INSERT INTO status (status_text) VALUES ( 'Assigned' ) ;
+INSERT INTO status (status_text) VALUES ( 'In Progress' ) ;
+INSERT INTO status (status_text) VALUES ( 'Resolved' ) ;
+
+
+INSERT INTO categories (categories_name) VALUES ( 'Oil Spill' ) ;
+INSERT INTO categories (categories_name) VALUES ( 'Dumping' ) ;
+
+
+INSERT INTO priority (priority_text) VALUES ( 'High' ) ;
+INSERT INTO priority (priority_text) VALUES ( 'Medium' ) ;
+INSERT INTO priority (priority_text) VALUES ( 'Low' ) ;
+INSERT INTO priority (priority_text) VALUES ( 'Not Assigned yet' ) ;
+
+
+INSERT INTO role (role_text) VALUES ( 'Unregistered User' ) ;
+INSERT INTO role (role_text) VALUES ( 'Registered User' ) ;
+INSERT INTO role (role_text) VALUES ( 'Admin' ) ;
+INSERT INTO role (role_text) VALUES ( 'City manager' ) ;
+INSERT INTO users (user_name ,  user_password , user_first_name , user_last_name ) VALUES ( "bsmith",  "shouldnotreadthis", "bill", "smilth" ) ;
+INSERT INTO users (user_name ,  user_password , user_first_name , user_last_name  ) VALUES ( "ayu",  "shouldnotreadthis", "andy", "yu") ;
+INSERT INTO users (user_name ,  user_password , user_first_name , user_last_name ) VALUES ( "tsmith",  "shouldnotreadthis", "timmy", "smilth" ) ;
+INSERT INTO users (user_name ,  user_password , user_first_name , user_last_name ) VALUES ( "bfarve",  "shouldnotreadthis", "brett", "farve") ;
+INSERT INTO users (user_name ,  user_password , user_first_name , user_last_name  ) VALUES ( "jelway",  "shouldnotreadthis", "john", "elway") ;
+
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "Alamo Square", "37.776384N", "122.434709W" ) ;
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "Alta Plaza", "37.7911111N", "122.44500000W" ) ;
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "Balboa Park", "37.7275N", "122.445W" ) ;
+
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "Bernal Heights Park", "37.74305556N", "122.4158333W" ) ;
+
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "Buena Vista Park", "37.76833333N", "122.44083333W" ) ;
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "Candlestick Park", "37.71361111N", "122.38611111W" ) ;
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "Cayuga Park", "37.71388889N","122.45027778W" ) ;
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "Corona Heights Park", "37.76472222N", "122.43916667" ) ;
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "Dolores Park", "37.75972222N", "122.42611111W" ) ;
+
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "Duboce Park", "37.76972222N", "122.434709W" ) ;
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "Garfield Square", "37.75027778N", "122.41222222W" ) ;
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "Conservatory of Flowers", "37.772N", "122.46W" ) ;
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "Japanese Tea Garden", "37.77N", "122.47027778W" ) ;
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "Kezar Stadium", "37.76694444N", "122.45611111W" ) ;
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "Music Concourse", "37.77055556N", "122.4675W" ) ;
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "San Francisco Botanical Garden", "37.76833333N", "122.47W" ) ;
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "Grand View Park", "37.75638889N", "122.47166667W" ) ;
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "Harding Park Golf Club", "37.72388889N", "122.49305556W" ) ;
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "Heron's Head Park", "37.73805556N", "122.37305556W" ) ;
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "Holly Park", "37.73722222N", "122.42083333W" ) ;
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "California Palace of the Legion of Honor", "37.78388889N", "122.50111111W" ) ;
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "Lake Merced", "37.72N", "122.495W" ) ;
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "McLaren Park", "37.71805556N", "122.41916667W" ) ;
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "Marina Green", "37.80668056N", "122.43916667W" ) ;
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "Mount Davidson Park", "37.73833333N", "122.45333333W" ) ;
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "Mountain Lake Park", "37.78694444N", "122.41805556W" ) ;
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "Palace of Fine Arts", "37.80277778N", "122.44833333W" ) ;
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "The Panhandle", "37.77194444N", "122.45W" ) ;
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "Pine Lake", "37.73611111N", "122.48888889W" ) ;
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "Coit Tower", "37.8025N", "122.40583333W" ) ;
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "Portsmouth Square", "37.79472222N", "122.40527778W" ) ;
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "San Francisco Zoo", "37.73305556N", "122.50305556W" ) ;
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "Sigmund Stern Recreation Grove", "37.73611111N", "122.4775W" ) ;
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "South Park", "37.78138889N", "122.39388889W" ) ;
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "Sue Bierman Park", "37.79611111N", "122.3975W" ) ;
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "Twin Peaks", "37.75166667N", "122.44777778W" ) ;
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "Union Square", "37.78805556N", "122.4075W" ) ;
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "Warm Water Cove", "37.75444444N", "122.38361111W" ) ;
+
+INSERT INTO locations (location_name, location_latitude, location_longitude) VALUES ( "Washington Square", "37.80083333N", "122.41W" ) ;
