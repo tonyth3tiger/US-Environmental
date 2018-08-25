@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<<<<<<< HEAD
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-116671556-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-116671556-1');
+</script>
+
+=======
+<script>
+var connection = new WebSocket('ws://<YourIPHere:8000');
+connection.onmessage = function (event) { 
+  data = JSON.parse(event.data);
+  document.getElementById('resultsField').innerHTML="";
+  for ( var key in data) {
+    document.getElementById('resultsField').innerHTML+=data[key].user_name + " ";
+    document.getElementById('resultsField').innerHTML+=data[key].first_name + "<br>";
+  }
+};
+</script>
+
+
+
+
+
+>>>>>>> gstrom-March-29-2018
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Styling for the search box, select option menu and header -->
+<style>
+* {box-sizing: border-box;}
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+h1 {
+    text-align: center;
+    font-weight: normal;
+}
+.search-container input[type=text] {
+    height: 40px;
+    width: 800px;
+}
+.search-container {
+    margin-top: 10%;
+    text-align: center;
+}
+.search-container button {
+  float: none;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 0;
+  width: 40px;
+  height: 41px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+.search-container button:hover {
+  background: #ccc;
+}
+select {
+box-sizing: border-box;
+width:120px;
+padding:10px;
+margin-top:10px;
+border-radius:5px;
+line-height: 1;
+}
+</style>
+<script>
+<!-- This function changes the placeholder text with respect to option selected in the category -->
+function getOption() {
+    var obj = document.getElementById("selectionType");
+    document.getElementById("searchbox").placeholder = 
+    obj.options[obj.selectedIndex].value;
+}
+function submitPage() {
+  var obj = document.getElementById("selectionType");
+  //document.getElementById("searchbox").placeholder = obj.options[obj.selectedIndex].value;
+  connection.send(JSON.stringify({searchType: obj.options[obj.selectedIndex].value, searchString: document.getElementById("results0").value}));
+}
+</script>
+</head>
+<body>
+    <h1>CSC648 Software Engineering Class Spring 2018 - Section 02 - Team 9</h1>
+    <div class="search-container">
+    <!-- <form method="get" name="searchResult" action="/searchResult.html"> -->
+<!-- Category Menu -->
+       <select class="selectpicker show-menu-arrow" id="selectionType" onchange="getOption()">
+        <option value="name zip">ALL</option>
+        <option value="user_name">Name</option>
+        <option value="zip">zip</option>
+        <option value="Search by zip code or park name...">All</option>
+        <option value="Search by Park Name..">Park Name</option>
+        <option value="Search by Zip Code..">Zip Code</option>
+        <option value="Search by City Name..">City</option>
+       </select>
+       <input id="results0" type="text" placeholder="Search by zip code or park name..." name= "search" size = "60" onkeydown="if (event.keyCode == 13) { submitPage(); return false; }">
+       <button type="submit" onClick=submitPage();><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+
+
+<p>
+Result: <div id="resultsField"></div>
+</p>
+<!--
+<input type=text 
+onchange="connection.send(this.value); ">
+-->
+
+
+</body>
+</html>

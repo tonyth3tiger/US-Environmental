@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<!--CityManagerDashboard, created by Patrick Wong-->
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>City Manager Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116671556-1"></script>
+<!--Google reCaptcha-->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-116671556-1');
+
+
+<!-- This function changes the placeholder text with respect to option selected in the category -->
+    function getOption() {
+        var obj = document.getElementById("selectionType");
+        document.getElementById("searchbox").placeholder = 
+        obj.options[obj.selectedIndex].value;
+    }
+    </script>
+
+
+<!-- Styling for the search box, select option menu and header -->
+<style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 800px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 60px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+
+    /* Set image size for navigation brand */
+    img.navbar-brand  {
+    line-height: 100px;
+    width:50px;
+    height:50px;
+    }
+        
+    /* Set background color, black text and some padding for footer */
+    footer {
+      color: black;
+      padding: 15px;
+     text-align:center
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+
+    * {box-sizing: border-box;}
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    h1 {
+        text-align: center;
+        font-weight: normal;
+    }
+
+    .nav bd-sidenav
+    {
+    max-width:160px;
+    margin: 0;
+    padding: 1em;
+    border-left: 1px solid gray;
+    }
+
+    /* Search input text box styling */
+
+    .input-group [type=text]
+    {
+    box-sizing: border-box;
+    width:450px;
+    padding:10px;
+    margin-top:3px;
+    margin-left:210px;
+    margin-right:auto;
+    border-radius:5px;
+    line-height: 1;
+    color:black;
+
+    }
+
+
+    /* Search icon button styling */
+    .input-group-btn{
+
+    margin-top:3px;
+    margin-left:auto;
+    margin-right:auto;
+    border-radius:5px;
+    line-height: 1;
+    color:black;
+    float:left;
+    }
+
+    /* Category Select box styling */
+    .selectWidth{
+    margin-top:3px;
+    margin-left:225px;
+    margin-right:auto;
+    border-radius:5px;
+    line-height: 1;
+    color:black;
+    float:left;
+
+    }
+    /* Set search icon size */
+    .icon-size{
+    font-size:12px;
+    }
+
+    /* US Environmental Heading */
+    .bd-pageheader h1
+    {
+    text-align:center;
+    margin-top:1px;
+    margin-left: 350px;
+    font-size:1rem;font-weight:400;color:white;
+
+    }
+
+
+    /* Main section styling */
+    .main {
+        margin-left: 180px; 
+    }
+
+    /* Recent posting heading styling */
+    .main h1 {
+    float:left
+    }
+
+    /* Styling for the section below Navigation bar */
+    .bd-pageheader{
+    padding:2rem 15px;
+    margin-bottom:1.5rem;
+    text-align:center;
+    height: 100px;
+    background-color:#50A379
+    }
+
+
+    /* Styling for the section below Navigation bar */
+    .bd-pageheader .container{
+    position:relative
+    }
+
+
+    /* Park image thumbnail styling */
+    .park{
+
+    border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px;
+        width: 160px;
+        float:left;
+    }
+    
+    th{
+    font-size:120%;
+    }
+    
+    td{
+    font-size:110%;
+    }
+    
+    /*this keeps the footer from blocking content*/
+    body {
+    min-height: 200px;
+    margin-bottom: 50px;
+    clear: both;
+    }
+    
+    /*prevents scroll bar from shifting the page*/
+    html {
+    overflow-y: scroll;
+    }
+    
+    .form-control{
+    width: 250px;
+    }
+    
+    .container-fluid{
+    margin: 0 auto;
+    width: 80%;
+    
+    }
+    
+    .form-group row{
+    margin:auto;
+    width:80%;
+    }
+
+<!-- @media (min-width:576px){.bd-pageheader{padding-top:4rem;padding-bottom:4rem;margin-bottom:3rem;text-align:left}
+@media (min-width:768px){.bd-pageheader h1{font-size:4rem}.bd-pageheader p{font-size:1.5rem}}
+@media (min-width:992px){.bd-pageheader h1,.bd-pageheader p{margin-right:380px}.bd-pageheader  -->
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+            </button>
+                
+        </div>
+  
+        <div class="collapse navbar-collapse" id="myNavbar">
+            
+            <ul class="nav navbar-nav navbar-left">
+              <!-- Logo -->
+              <img class="navbar-brand" src="https://github.com/csc648-sp18/csc648-team09/blob/master/US%20Environmental%20Website/FrontEnd/Logo/NewLogo.png?raw=true"></img>
+              <li><a href="#">Post an issue</a></li>
+              <li><a href="#myModal" data-toggle="modal" data-target="#myModal">Login</a></li>
+              <li><a href="#myModal2" data-toggle="modal" data-target="#myModal2">Register</a></li>
+            </ul>             
+        </div>
+
+    </div>  
+
+    <div class="collapse navbar-collapse" id="myNavbar">
+   
+        <ul class="nav navbar-nav navbar-right">
+
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Help</a></li>
+        
+        </ul>
+        
+    </div>
+    
+</nav>
+
+  <!-- Modal login-->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <!--<h4 class="modal-title">Login</h4>-->
+        </div>
+        <div class="modal-body">
+          <form>
+                <h1>Login</h1>
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Email" maxlength="30" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Password" maxlength="30" required>
+                    </div>
+                </div>
+                    
+                <label>
+                    <input type="checkbox" name="remember"> Remember me
+                </label>
+                <br>
+                    
+                <button type="submit">Login</button>
+                <span class="password">Forgot <a href="#">password?</a></span>     
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>    
+ <!-- Modal registration--->
+  <div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <!--h4 class="modal-title">Login</h4>-->
+        </div>
+        <div class="modal-body">
+          <form>
+                <h1>Registration</h1>
+                <div class="form-group row" align="center">
+                    <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Email" maxlength="30" required>
+                    </div>
+                </div>
+                <div class="form-group row" align="center">
+                    <label for="inputCity" class="col-sm-2 col-form-label">City</label>
+                    <div class="col-sm-10">
+                        <input type="inputCity" class="form-control" id="inputCity" placeholder="City" maxlength="30" required>
+                    </div>
+                </div>
+                <div class="form-group row" align="center">
+                    <label for="inputPhoneNumber" class="col-sm-2 col-form-label">Phone Number</label>
+                    <div class="col-sm-10">
+                        <input type="inputPhoneNumber" class="form-control" id="inputPhoneNumber" placeholder="Phone (optional)" maxlength="11">
+                    </div>
+                </div>
+                <div class="form-group row" align="center">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-10">
+                        <input type="inputPassword" class="form-control" id="inputPassword" placeholder="Password" maxlength="30" required>
+                    </div>
+                </div>
+                <div class="form-group row" align="center">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Repeat Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Repeat Password" maxlength="30" required>
+                    </div>
+                </div>
+                    
+                <br>
+                <div class="g-recaptcha" data-sitekey="6Lf0CFEUAAAAABWkxWHS4x3UtoQcUFaHlYsZj9mK"></div>
+                <button type="submit">Register</button>
+          </form>
+        </div>
+      
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>  
+  </div>
+
+<!-- Section below navigation bar containing search and categories -->
+<div class="bd-pageheader">
+    <div class="container">
+        <form method="get" name="searchResult" action="/searchResult.html">  
+
+        <div class="input-group" >
+            <div class="col-md-2">
+ <!-- Category Menu -->
+            <select class="form-control selectWidth" id="selectionType" onchange="getOption()">
+                <option value="Search by zip code or park name...">All</option>
+                <option value="Search by Park Name..">Park Name</option>
+                <option value="Search by Zip Code..">Zip Code</option>
+                <option value="Search by City Name..">City</option>
+            </select>
+            </div>
+  <!-- Search bar -->
+      <input type="text" class="form-control" id="searchbox" placeholder="Search by zip code or park name or city...">
+ <!-- Search icon button -->
+        <span class="input-group-btn">
+            <button class="btn btn-secondary" type="button"><span class="glyphicon glyphicon-search icon-size"></span> </button>
+        </span>      
+        </div>
+        </form> 
+    </div>
+</div>   
+
+<!--
+<div class="container-fluid" >
+    <div class="row">
+        <div class="col-sm-4" style="float: none; margin: 0 auto;">
+            <form style="border:1px solid #ccc">
+                <h1>Login</h1>
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Email" maxlength="30" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Password" maxlength="30" required>
+                    </div>
+                </div>
+                    
+                <label>
+                    <input type="checkbox" name="remember"> Remember me
+                </label>
+                <br>
+                    
+                <button type="submit">Login</button>
+                <span class="password">Forgot <a href="#">password?</a></span>     
+                </form>
+        </div>
+        <div class="col-sm-4" >
+            <form style="border:1px solid #ccc">
+                <h1>Registration</h1>
+                <div class="form-group row">
+                    <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Email" maxlength="30" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputCity" class="col-sm-2 col-form-label">City</label>
+                    <div class="col-sm-10">
+                        <input type="inputCity" class="form-control" id="inputCity" placeholder="City" maxlength="30" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPhoneNumber" class="col-sm-2 col-form-label">Phone Number</label>
+                    <div class="col-sm-10">
+                        <input type="inputPhoneNumber" class="form-control" id="inputPhoneNumber" placeholder="Phone (optional)" maxlength="11">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-10">
+                        <input type="inputPassword" class="form-control" id="inputPassword" placeholder="Password" maxlength="30" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Repeat Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Repeat Password" maxlength="30" required>
+                    </div>
+                </div>
+                    
+                <br>
+                <div class="g-recaptcha" data-sitekey="6Lf0CFEUAAAAABWkxWHS4x3UtoQcUFaHlYsZj9mK"></div>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+
+    
+</div>
+-->
+
+ <!-- Footer bar bottom -->
+<footer class="navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <span>© Copyright: CSC 648 Software Engineering Class Section 02 Team 09</span>
+    </div>
+</footer>
+</body>
+</html>

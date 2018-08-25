@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-116671556-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-116671556-1');
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+* {box-sizing: border-box;}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-weight: normal;
+}
+
+.search-container input[type=text] {
+    height: 40px;
+    width: 800px;
+}
+
+.search-container {
+    margin-top: 10%;
+    text-align: center;
+}
+
+.search-container button {
+  float: none;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 0;
+  width: 40px;
+  height: 41px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.search-container button:hover {
+  background: #ccc;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav .search-container {
+    float: none;
+  }
+  .topnav a, .topnav input[type=text], .topnav .search-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav input[type=text] {
+    border: 1px solid #ccc;
+  }
+}
+</style>
+</head>
+
+<body>
+    <h1>CSC648 Software Engineering Class Spring 2018 - Section 02 - Team 9</h1>
+    <div class="search-container">
+        <form method="get" name="searchResult" action="/searchResult.html">
+          <input type="text" placeholder="Search by zip code or park name..." name="search" size = "60">
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+</body>
+</html>
